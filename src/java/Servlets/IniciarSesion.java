@@ -138,7 +138,7 @@ public class IniciarSesion extends HttpServlet {
                 Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
         //
-        ArrayList<String> listaCompetencias = new ArrayList<String>();     
+        ArrayList<ArrayList<String>> listaCompetencias = new ArrayList<ArrayList<String>>();     
         JSONArray jsonArray = (JSONArray)competencias_json; 
         try{ 
         if (jsonArray != null) { 
@@ -152,7 +152,7 @@ public class IniciarSesion extends HttpServlet {
             listaTemp.add(jsonArray.getJSONObject(i).get("end_date").toString());
             listaTemp.add(jsonArray.getJSONObject(i).get("state").toString());
             listaTemp.add(jsonArray.getJSONObject(i).get("_id").toString());
-            //listaCompetencias.add(listaTemp);
+            listaCompetencias.add(listaTemp);
            } 
         } }catch(JSONException exx){}
         //luis=(competencias_json.getJSONObject(0).get("name")));
