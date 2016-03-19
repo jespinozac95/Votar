@@ -66,7 +66,7 @@
 
                     <tr >
                       <td>
-                        <a href="/Votar/Proyectos/index.jsp">
+                        <a href="/SIGIPRO/Ventas/Pago?accion=ver&id_pago=">
                         <div style="height:100%;width:100%">
                             ${competencia}
                         </div>

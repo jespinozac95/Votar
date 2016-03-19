@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -92,7 +93,8 @@ public class IniciarSesion extends HttpServlet {
     PrintWriter out;
     out = response.getWriter();
     request.setCharacterEncoding("UTF-8");
-
+    String luis="Hola";
+    
     HelpersHTML h = new HelpersHTML();
     
     String usuario = request.getParameter("usuario");
@@ -135,8 +137,26 @@ public class IniciarSesion extends HttpServlet {
             } catch (JSONException ex) {
                 Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        request.setAttribute("competencias", competencias_json);
+        //
+        ArrayList<String> listaCompetencias = new ArrayList<String>();     
+        JSONArray jsonArray = (JSONArray)competencias_json; 
+        try{ 
+        if (jsonArray != null) { 
+           int len = jsonArray.length();
+           ArrayList<String> listaTemp = new ArrayList<String>();
+           for (int i=0;i<len;i++){
+               
+            listaTemp.add(jsonArray.getJSONObject(i).get("name").toString());
+            listaTemp.add(jsonArray.getJSONObject(i).get("description").toString());
+            listaTemp.add(jsonArray.getJSONObject(i).get("start_date").toString());
+            listaTemp.add(jsonArray.getJSONObject(i).get("end_date").toString());
+            listaTemp.add(jsonArray.getJSONObject(i).get("state").toString());
+            listaTemp.add(jsonArray.getJSONObject(i).get("_id").toString());
+            listaCompetencias.add(listaTemp);
+           } 
+        } }catch(JSONException exx){}
+        //luis=(competencias_json.getJSONObject(0).get("name")));
+        request.setAttribute("competencias",list);
         
         
         redireccionar(request, response, "/Competencias/index.jsp");
