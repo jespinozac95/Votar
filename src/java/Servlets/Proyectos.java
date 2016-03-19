@@ -5,8 +5,11 @@
  */
 package Servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,13 +20,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONTokener;
 
 /**
  *
  * @author Josue
  */
-@WebServlet(name = "Competencias", urlPatterns = {"/Competencias/Competencias.jsp"})
-public class Competencias extends HttpServlet {
+@WebServlet(name = "Proyectos", urlPatterns = {"/Proyectos"})
+public class Proyectos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,6 +70,23 @@ public class Competencias extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String competencias = ";";
+        
+        String id = request.getParameter("id");
+        
+        URL url = new URL("http://172.26.92.45:3000/api/competitions/"+id+"/projects");
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+        
+        String json = in.readLine();
+        JSONArray proyectos_json = null;
+        JSONTokener tokener = new JSONTokener(json);
+            try {
+                proyectos_json = new JSONArray(tokener);
+                //System.out.println(competencias_json.getJSONObject(0).get("name"));
+            } catch (JSONException ex) {
+                Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        //NO sé que hace de aquí para abajo.
         request.setAttribute("message", request.getAttribute("message"));
         request.getRequestDispatcher("/Competencias/index.jsp").forward(request, response);
         request.setAttribute("competencias", competencias);

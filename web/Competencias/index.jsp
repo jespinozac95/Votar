@@ -95,7 +95,10 @@
                 <center><table class="table-sorting table-striped table-hover datatable" style="width:90%">
                   <tr>
                   <strong><th>Nombre</th></strong>
-                  <strong><th>Imagen</th></strong> 
+                  <strong><th>Descripción</th></strong> 
+                  <strong><th>Fecha de Inicio</th></strong> 
+                  <strong><th>Fecha Final</th></strong> 
+                  <strong><th>Estado</th></strong> 
                   </tr>
                     <tr>
                       
@@ -103,12 +106,10 @@
                     </tr>
                     <c:forEach items="${competencias}" var="competencia">
 
-                    <tr >
+                        <tr id="${competencia[5]}">
                       <td>
-                        <a href="/Votar/Proyectos/index.jsp">
-                        <div style="height:100%;width:100%">
-                            ${competencia[0]}
-                        </div>
+                        <a href="/Votar/Proyectos?id=${competencia[5]}">
+                        ${competencia[0]}
                         </a> 
                        </td>
                        <td>

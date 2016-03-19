@@ -103,6 +103,7 @@ public class IniciarSesion extends HttpServlet {
     {
         String mensaje = "Bienvenido "+usuario+". Usted es un usuario visualizador.";
         request.setAttribute("mensaje", h.mensajeDeExito(mensaje));
+        request.setAttribute("usuario", usuario);
         
         URL url = new URL("http://172.26.92.45:3000/api/competitions");
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -157,7 +158,7 @@ public class IniciarSesion extends HttpServlet {
         } }catch(JSONException exx){}
         //luis=(competencias_json.getJSONObject(0).get("name")));
         request.setAttribute("competencias",listaCompetencias);
-        
+        request.setAttribute("usuario", usuario);
         
         redireccionar(request, response, "/Competencias/index.jsp");
     }
