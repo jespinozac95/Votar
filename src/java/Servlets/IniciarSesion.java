@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -116,7 +117,7 @@ public class IniciarSesion extends HttpServlet {
         
         request.setAttribute("competencias", competencias_json);
         
-        response.sendRedirect("/Votar/Competencias/index.jsp");
+        redireccionar(request, response, "/Competencias/index.jsp");
         //System.out.println("Antes de usuarioDAO. Usuario = "+usuario+", contrasenna = "+contrasenna);
     }
     if (usuario.equals("luis") && contrasenna.equals("1234")){
@@ -137,16 +138,22 @@ public class IniciarSesion extends HttpServlet {
         
         request.setAttribute("competencias", competencias_json);
         
-        response.sendRedirect("/Votar/Competencias/index.jsp");
+        
+        redireccionar(request, response, "/Competencias/index.jsp");
     }
     else {
         String mensaje = "Usuario o contraseña incorrectos.";
         request.setAttribute("mensaje", h.mensajeDeError(mensaje));
-        response.sendRedirect("/Votar/index.jsp");
+        
+        redireccionar(request, response, "/index.jsp");
     }
 
     }
 
+    protected void redireccionar(HttpServletRequest request, HttpServletResponse response, String redireccion) throws ServletException, IOException {
+        RequestDispatcher vista = request.getRequestDispatcher(redireccion);
+        vista.forward(request, response);
+    }
     /**
      * Returns a short description of the servlet.
      *

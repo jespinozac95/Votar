@@ -52,19 +52,16 @@
             <div class="widget-header">
               <h3><i class="fa fa-users"></i> Competencias </h3>
             </div>
-            ${mensaje}
             <div class="widget-content" >
                 <center><table style="width:90%">
                   <tr>
                   <strong><th>Nombre</th></strong>
                   <strong><th>Imagen</th></strong> 
                   </tr>
-                <c:forEach items="${usuarios}" var="usuario"> 
                     <tr>
-                        <td>TEC Emprende</td>
+                        <td>${competencias_json.getJSONObject(0).get("name")}</td>
                         <td><img height="10%" width="10%" src="http://placehold.it/256x256" alt="" /></td>
                     </tr>
-                </c:forEach>
                     </table></center>
             </div>
           </div>
@@ -72,7 +69,7 @@
       </div>
     </div>
                     </div>
-        <footer class="footer">&copy; 2015 Trío de la TeMuer</footer>
+        <footer class="footer">&copy; 2016 Votar</footer>
 
 	<!-- Javascript -->
 	<script src="/Votar/recursos/js/jquery/jquery-2.1.0.min.js"></script>
