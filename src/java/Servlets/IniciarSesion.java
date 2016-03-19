@@ -100,6 +100,22 @@ public class IniciarSesion extends HttpServlet {
     {
         String message = "Bienvenido "+usuario+". Usted es un usuario visualizador.";
         request.setAttribute("message", h.mensajeDeExito(message));
+        
+        URL url = new URL("http://172.26.92.45:3000/api/competitions");
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+        
+        String json = in.readLine();
+        JSONArray competencias_json = null;
+        JSONTokener tokener = new JSONTokener(json);
+            try {
+                competencias_json = new JSONArray(tokener);
+                //System.out.println(competencias_json.getJSONObject(0).get("name"));
+            } catch (JSONException ex) {
+                Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        request.setAttribute("competencias", competencias_json);
+        
         response.sendRedirect("/Votar/Competencias/index.jsp");
         //System.out.println("Antes de usuarioDAO. Usuario = "+usuario+", contrasenna = "+contrasenna);
     }
@@ -110,14 +126,16 @@ public class IniciarSesion extends HttpServlet {
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
         
         String json = in.readLine();
+        JSONArray competencias_json = null;
         JSONTokener tokener = new JSONTokener(json);
             try {
-                JSONArray finalResult = new JSONArray(tokener);
-                //System.out.println(finalResult.getJSONObject(0).get("name"));
+                competencias_json = new JSONArray(tokener);
+                //System.out.println(competencias_json.getJSONObject(0).get("name"));
             } catch (JSONException ex) {
                 Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
         
+        request.setAttribute("competencias", competencias_json);
         
         response.sendRedirect("/Votar/Competencias/index.jsp");
     }
