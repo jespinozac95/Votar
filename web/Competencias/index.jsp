@@ -72,9 +72,19 @@
                         </div>
                         </a> 
                        </td>
-                       ${competencia[1]}<>
-                             ${competencia[2]}
-                      <td></td>
+                       <td>
+                       ${competencia[1]}
+                       </td>
+                       <td>
+                       ${competencia[2]}
+                       </td>
+                       <td>
+                       ${competencia[3]}
+                       </td>
+                       <td>
+                       ${competencia[4]}
+                       </td>
+                       <td></td>
                     </tr>
                   </c:forEach>
                     </table></center>
