@@ -9,17 +9,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<title>Votar | Módulo de Control</title>
+	<title>Votar | Competencias</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="description" content="Votar - Proyecto ATI - Infraestructura Tecnológica II - II Semestre 2015">
-	<meta name="author" content="Trío de la TeMuer">
+	<meta name="description" content="Votar">
+	<meta name="author" content="Josué Espinoza - Luis Rodríguez">
 
 	<!-- CSS -->
-	<link href="/Votar/recursos/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
-	<link href="/Votar/recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen">
-	<link href="/Votar/recursos/css/main.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="recursos/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="recursos/css/main.css" rel="stylesheet" type="text/css" media="screen">
 
 	<!--[if lte IE 9]>
 			<link href="recursos/css/main-ie.css" rel="stylesheet" type="text/css" media="screen" />
@@ -31,19 +31,58 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="recursos/ico/kingadmin-favicon114x114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="recursos/ico/kingadmin-favicon72x72.png">
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="recursos/ico/kingadmin-favicon57x57.png">
-	<link rel="shortcut icon" href="/Votar/recursos/imagenes/logo.png">
+	<link rel="shortcut icon" href="recursos/imagenes/box.png">
 
 </head>
         <div class="wrapper full-page-wrapper page-login text-center">
-            <a href="/Votar/index.jsp"><h1>Cerrar Sesión</h1></a>
-		<div class="inner-page">
-      <div class="logo">
-                <a href="/Votar/index.jsp">
-                        <img height="10%" width="10%" src="/Votar/recursos/imagenes/box.png" alt="" />
-                </a>
+            <div class="top-bar" style="height: 50%">
+                <div class="container">
+                        <div class="row" style="height: 50%; font-family: 'latolight'">
+                                <!-- logo -->
+                                <div class="col-md-2 logo" style="margin-bottom: 0px">
+                                        <a href="index.jsp">
+                                                <img src="recursos/imagenes/box_white.png" alt="Votar">
+                                                <p style="color:white">Votar</p>
+                                        </a>
+                                </div>
+                                <!-- end logo -->
+                                <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-9" style="width: 100%; height: 100%">
+                                                        <div class="top-bar-right">
+                
+                                                                <!-- logged user and the menu -->
+                                                                <div class="logged-user">
+                                                                        <div class="btn-group">
+                                                                                <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                                                                                        <span class="name">Bienvenido, ${usuario}</span>
+                                                                                        <span class="caret"></span>
+                                                                                </a>
+                                                                                <ul class="dropdown-menu" role="menu">
+                                                                                        <li>
+                                                                                                <a href="/Votar/index.jsp">
+                                                                                                        <i class="fa fa-power-off"></i>
+                                                                                                        <span class="text">Cerrar Sesión</span>
+                                                                                                </a>
+                                                                                        </li>
+                                                                                </ul>
+                                                                        </div>
+                                                                </div>
+                                                                <!-- end logged user and the menu -->
+                                                        </div>
+                                                        <!-- /top-bar-right -->
+                                                </div>
+                                        </div>
+                                        <!-- /row -->
+                                </div>
+                        </div>
+                        <!-- /row -->
+                </div>
+                <!-- /container -->
         </div>
-                    <div><h2>Módulo de Control</h2></div>
+		<div class="inner-page">
                     <div><h2>${mensaje}</h2></div>
+                    <div><h2>Listado de Competencias</h2></div>
                     <div><h3><i class="fa fa-cog fa-spin"></i></h3></div>
       <!-- main -->
       <div class="content">
@@ -53,7 +92,7 @@
               <h3><i class="fa fa-users"></i> Competencias </h3>
             </div>
             <div class="widget-content" >
-                <center><table style="width:90%">
+                <center><table class="table-sorting table-striped table-hover datatable" style="width:90%">
                   <tr>
                   <strong><th>Nombre</th></strong>
                   <strong><th>Imagen</th></strong> 
