@@ -152,7 +152,7 @@ public class IniciarSesion extends HttpServlet {
             listaTemp.add(jsonArray.getJSONObject(i).get("end_date").toString());
             listaTemp.add(jsonArray.getJSONObject(i).get("state").toString());
             listaTemp.add(jsonArray.getJSONObject(i).get("_id").toString());
-            listaCompetencias.add(listaTemp);
+            //listaCompetencias.add(listaTemp);
            } 
         } }catch(JSONException exx){}
         //luis=(competencias_json.getJSONObject(0).get("name")));
