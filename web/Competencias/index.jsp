@@ -98,9 +98,22 @@
                   <strong><th>Imagen</th></strong> 
                   </tr>
                     <tr>
-                        <td>${competencias_json.getJSONObject(0).get("name")}</td>
+                        <td>${competencias}</td>
                         <td><img height="10%" width="10%" src="http://placehold.it/256x256" alt="" /></td>
                     </tr>
+                    <c:forEach items="${competencias}" var="competencia">
+
+                    <tr >
+                      <td>
+                        <a href="/Votar/Proyectos/index.jsp">
+                        <div style="height:100%;width:100%">
+                            ${competencia}
+                        </div>
+                        </a>
+                      </td>
+                      <td></td>
+                    </tr>
+                  </c:forEach>
                     </table></center>
             </div>
           </div>
