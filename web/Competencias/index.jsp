@@ -59,7 +59,7 @@
                   <strong><th>Imagen</th></strong> 
                   </tr>
                     <tr>
-                        <td>${competencias}</td>
+                      
                         <td><img height="10%" width="10%" src="http://placehold.it/256x256" alt="" /></td>
                     </tr>
                     <c:forEach items="${competencias}" var="competencia">
@@ -68,10 +68,12 @@
                       <td>
                         <a href="/Votar/Proyectos/index.jsp">
                         <div style="height:100%;width:100%">
-                            ${competencia}
+                            ${competencia[0]}
                         </div>
-                        </a>
-                      </td>
+                        </a> 
+                       </td>
+                       ${competencia[1]}<>
+                             ${competencia[2]}
                       <td></td>
                     </tr>
                   </c:forEach>
