@@ -23,6 +23,7 @@ import jdk.nashorn.internal.parser.JSONParser;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 /**
  *
@@ -107,26 +108,17 @@ public class IniciarSesion extends HttpServlet {
         request.setAttribute("message", h.mensajeDeExito(message));
         URL url = new URL("http://172.26.92.45:3000/api/competitions");
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-    
-        StringBuilder sb = new StringBuilder();
-
-        String line;
-        while ((line = in.readLine()) != null) {
-            sb.append(line);
-            System.out.println(line);
-        }
         
-        JSONObject json = null;
+        String json = in.readLine();
+        JSONTokener tokener = new JSONTokener(json);
             try {
-                json = new JSONObject(sb.toString());
+                JSONArray finalResult = new JSONArray(tokener);
+                //System.out.println(finalResult.getJSONObject(0).get("name"));
             } catch (JSONException ex) {
                 Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try { 
-                System.out.println(json.getJSONObject(0).get("name"));
-            } catch (JSONException ex) {
-                Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
+        
         response.sendRedirect("/Votar/Competencias/index.jsp");
     }
     else {
