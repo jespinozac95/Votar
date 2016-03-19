@@ -8,6 +8,9 @@ package Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import Utilidades.HelpersHTML;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +19,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdk.nashorn.internal.parser.JSONParser;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -98,6 +105,28 @@ public class IniciarSesion extends HttpServlet {
     if (usuario.equals("luis") && contrasenna.equals("1234")){
         String message = "Bienvenido "+usuario+". Usted es un usuario votante.";
         request.setAttribute("message", h.mensajeDeExito(message));
+        URL url = new URL("http://172.26.92.45:3000/api/competitions");
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+    
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        while ((line = in.readLine()) != null) {
+            sb.append(line);
+            System.out.println(line);
+        }
+        
+        JSONObject json = null;
+            try {
+                json = new JSONObject(sb.toString());
+            } catch (JSONException ex) {
+                Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try { 
+                System.out.println(json.getJSONObject(0).get("name"));
+            } catch (JSONException ex) {
+                Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+            }
         response.sendRedirect("/Votar/Competencias/index.jsp");
     }
     else {
