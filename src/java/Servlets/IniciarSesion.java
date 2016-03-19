@@ -156,7 +156,7 @@ public class IniciarSesion extends HttpServlet {
            } 
         } }catch(JSONException exx){}
         //luis=(competencias_json.getJSONObject(0).get("name")));
-        request.setAttribute("competencias",list);
+        request.setAttribute("competencias",listaCompetencias);
         
         
         redireccionar(request, response, "/Competencias/index.jsp");
