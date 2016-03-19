@@ -43,32 +43,26 @@
                 </a>
         </div>
                     <div><h2>Módulo de Control</h2></div>
-                    <div><h2>${message}</h2></div>
+                    <div><h2>${mensaje}</h2></div>
                     <div><h3><i class="fa fa-cog fa-spin"></i></h3></div>
       <!-- main -->
       <div class="content">
         <div class="main-content">
           <div class="widget widget-table">
             <div class="widget-header">
-              <h3><i class="fa fa-users"></i> Usuarios del Sistema </h3>
+              <h3><i class="fa fa-users"></i> Competencias </h3>
             </div>
             ${mensaje}
             <div class="widget-content" >
                 <center><table style="width:90%">
                   <tr>
-                  <strong><th>ID</th></strong>
-                  <strong><th>Username</th></strong> 
                   <strong><th>Nombre</th></strong>
-                  <strong><th>Apellidos</th></strong>
-                  <strong><th>Es Administrador</th></strong>
+                  <strong><th>Imagen</th></strong> 
                   </tr>
-                <c:forEach items="${usuarios}" var="usuario">
+                <c:forEach items="${usuarios}" var="usuario"> 
                     <tr>
-                        <td>${usuario.getId_usuario_u()}</td>
-                        <td>${usuario.getNombre_de_usuario_u()}</td>
-                        <td>${usuario.getNombre_u()}</td>
-                        <td>${usuario.getApellidos_u()}</td>
-                        <td>${usuario.isEs_administrador_u()}</td>
+                        <td>TEC Emprende</td>
+                        <td><img height="10%" width="10%" src="http://placehold.it/256x256" alt="" /></td>
                     </tr>
                 </c:forEach>
                     </table></center>

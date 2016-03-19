@@ -42,7 +42,7 @@
 				</a>
 			</div>
 
-                    ${message}
+                    ${mensaje}
 			<div class="login-box center-block">
 				<form class="form-horizontal" role="form" action="IniciarSesion" method="post">
                                     <p class="title"><center>Iniciar Sesión</center></p>
@@ -50,8 +50,8 @@
 						<label for="username" class="control-label sr-only">Usuario</label>
 						<div class="col-sm-12">
 							<div class="input-group">
-								<input type="text" placeholder="Su nombre de usuario" name="usuario" class="form-control" required>
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<input type="text" placeholder="Su nombre de usuario" name="usuario" class="form-control" required>
 							</div>
 						</div>
 					</div>
@@ -59,8 +59,8 @@
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="input-group">
-								<input type="password" placeholder="Su contraseña" name="contrasena" class="form-control" required>
 								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" placeholder="Su contraseña" name="contrasena" class="form-control" required>
 							</div>
 						</div>
 					</div>

@@ -98,8 +98,8 @@ public class IniciarSesion extends HttpServlet {
     String contrasenna = request.getParameter("contrasena");
     if (usuario.equals("josue") && contrasenna.equals("1234"))
     {
-        String message = "Bienvenido "+usuario+". Usted es un usuario visualizador.";
-        request.setAttribute("message", h.mensajeDeExito(message));
+        String mensaje = "Bienvenido "+usuario+". Usted es un usuario visualizador.";
+        request.setAttribute("mensaje", h.mensajeDeExito(mensaje));
         
         URL url = new URL("http://172.26.92.45:3000/api/competitions");
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -120,8 +120,8 @@ public class IniciarSesion extends HttpServlet {
         //System.out.println("Antes de usuarioDAO. Usuario = "+usuario+", contrasenna = "+contrasenna);
     }
     if (usuario.equals("luis") && contrasenna.equals("1234")){
-        String message = "Bienvenido "+usuario+". Usted es un usuario votante.";
-        request.setAttribute("message", h.mensajeDeExito(message));
+        String mensaje = "Bienvenido "+usuario+". Usted es un usuario votante.";
+        request.setAttribute("mensaje", h.mensajeDeExito(mensaje));
         URL url = new URL("http://172.26.92.45:3000/api/competitions");
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
         
@@ -140,8 +140,8 @@ public class IniciarSesion extends HttpServlet {
         response.sendRedirect("/Votar/Competencias/index.jsp");
     }
     else {
-        String message = "Usuario o contraseña incorrectos.";
-        request.setAttribute("message", h.mensajeDeError(message));
+        String mensaje = "Usuario o contraseña incorrectos.";
+        request.setAttribute("mensaje", h.mensajeDeError(mensaje));
         response.sendRedirect("/Votar/index.jsp");
     }
 
